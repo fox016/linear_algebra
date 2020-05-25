@@ -10,6 +10,13 @@ def identity(size):
 
 def lu_decomposition(A):
     m,n = np.shape(A)
+    if m == 0:
+        raise Exception("A cannot be an empty matrix")
+    if m != n:
+        raise Exception("A must be a square matrix")
+    for row in range(m):
+        if A[row,row] == 0:
+            raise Exception("0 cannot be on main diagonal of A")
     U = A
     L = identity(m)
     for col in range(n):
